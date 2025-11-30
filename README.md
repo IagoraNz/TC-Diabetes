@@ -1,59 +1,92 @@
-# 🩺 TC-Diabetes
+# 🩺 TC-Diabetes: Predição de Diabetes
 
-## 📘 Descrição
+![Status do Projeto](https://img.shields.io/badge/Status-Concluído-green)
+![Python](https://img.shields.io/badge/Python-3.8%2B-blue)
+![License](https://img.shields.io/badge/License-MIT-yellow)
 
-Este projeto tem como objetivo explorar dados sobre diabetes, treinando modelos de machine learning para prever e classificar diferentes tipos de diabetes ou riscos associados. O repositório contém notebooks, modelos treinados, figuras e resumo dos resultados.
+Este repositório contém o projeto de análise e classificação de dados clínicos para predição de diabetes, utilizando técnicas de Machine Learning e otimização de hiperparâmetros.
 
-Principais componentes:
+## 📄 Sobre o projeto
 
-- Um **notebook principal** (`main.ipynb`) com o fluxo completo de análise de dados, engenharia de features, treinamento e avaliação de modelos.  
-- Pasta `models/` com os modelos treinados salvos.  
-- Pasta `figs/` com figuras e gráficos gerados durante a análise.  
-- Um arquivo `resumo_resultados.csv`, com as métricas e comparações dos modelos.
+O objetivo deste projeto é desenvolver modelos de aprendizado de máquina capazes de prever se um paciente possui diabetes com base em medidas diagnósticas.
 
-## 🚀 Funcionalidades
+O projeto utiliza o dataset **Pima Indians Diabetes**, originalmente do National Institute of Diabetes and Digestive and Kidney Diseases.
 
-- 🚧 Pré-processamento de dados (limpeza, tratamento de valores faltantes, normalização, etc.)  
-- 📊 Análise exploratória de dados 
-- 🤖 Treinamento de modelos de machine learning para classificação  
-- 📈 Avaliação de modelos
-- 📚 Salvamento de modelos para reuso  
+### 🎯 Objetivos específicos
+- Realizar análise exploratória dos dados (EDA).
+- Pré-processar os dados (tratamento de valores faltantes, normalização).
+- Implementar e comparar algoritmos de classificação:
+    - **Support Vector Machine (SVM)**
+    - **Multi-Layer Perceptron (MLP)**
+- Otimizar hiperparâmetros utilizando diferentes estratégias:
+    - **Grid Search**
+    - **Random Search**
+    - **Optuna (TPE)**
+    - **TPOT (Genetic Algorithm)**
 
-## 🧪 Tecnologias e ferramentas
+## 📊 Dataset
 
-- **Python** (principal linguagem)  
-- **Jupyter Notebook** para experimentação interativa  
-- Bibliotecas: `pandas`, `numpy`, `scikit-learn`, `matplotlib` / `seaborn`  e outras
+O conjunto de dados contém 768 registros e 9 atributos (8 preditores e 1 alvo).
+
+- **Fonte:** [Kaggle - Pima Indians Diabetes Database](https://www.kaggle.com/uciml/pima-indians-diabetes-database)
+- **Atributos:** Gravidez, Glicose, Pressão Sanguínea, Espessura da Pele, Insulina, IMC, Função Pedigree Diabetes, Idade, Outcome (0 ou 1).
+
+## 🛠️ Tecnologias utilizadas
+
+O projeto foi desenvolvido em **Python** utilizando Jupyter Notebook. As principais bibliotecas são:
+
+- **Pandas** & **Numpy**: Manipulação e análise de dados.
+- **Matplotlib** & **Seaborn**: Visualização de dados.
+- **Scikit-Learn**: Construção de modelos de ML e métricas.
+- **Optuna** & **TPOT**: Otimização de hiperparâmetros e AutoML.
+
+## 🚀 Como executar
+
+### Pré-requisitos
+Certifique-se de ter o Python instalado.
+
+### Instalação
+
+1. Clone o repositório:
+   ```bash
+   git clone https://github.com/IagoraNz/TC-Diabetes.git
+   cd TC-Diabetes
+   ```
+
+2. Instale as dependências (exemplo):
+   ```bash
+   pip install pandas numpy scikit-learn matplotlib seaborn optuna tpot
+   ```
+
+3. Execute o Jupyter Notebook:
+   ```bash
+   jupyter notebook main.ipynb
+   ```
+
+## 📈 Resultados
+
+Os modelos foram avaliados utilizando validação cruzada. Abaixo um resumo dos melhores resultados obtidos (baseado na métrica ROC AUC e Acurácia):
+
+| Modelo | Estratégia | Acurácia (Teste) | F1-Score | ROC AUC |
+| :--- | :--- | :---: | :---: | :---: |
+| **SVM** | GridSearch | 73.59% | 0.5611 | **0.8325** |
+| **SVM** | TPOT (Genetic) | **75.32%** | **0.6587** | 0.8347 |
+| **MLP** | GridSearch | 74.89% | 0.6375 | **0.8410** |
+| **MLP** | Optuna (TPE) | **75.32%** | 0.6275 | 0.8042 |
+
+> **Observação:** Os resultados completos comparando todas as estratégias podem ser encontrados no arquivo `resumo_resultados.csv`. O modelo MLP com GridSearch apresentou um excelente equilíbrio entre as métricas, destacando-se no ROC AUC.
 
 ## 📂 Estrutura do repositório
 
 ```
-TC-Diabetes/
-├── figs/                  # Pastas com figuras / gráficos
-├── models/                # Modelos treinados
-├── main.ipynb             # Notebook principal
-└── resumo_resultados.csv  # Sumário de métricas e resultados
+📂TC-Diabetes/
+├── 📂 figs/               # Figuras e gráficos gerados
+├── 📂 models/             # Modelos treinados salvos
+├── 🐍 main.ipynb          # Notebook principal com o código
+├── 📄 resumo_resultados.csv # Tabela comparativa de resultados
+└── � README.md           # Documentação do projeto
 ```
 
-## 💻 Como executar
+## 📝 Licença
 
-1. Clone o repositório:
-
-```bash
-git clone https://github.com/IagoraNz/TC-Diabetes
-```
-
-2. Crie e ative um ambiente virtual (recomendado):
-
-```bash
-python -m venv venv
-source venv/bin/activate     # no Linux / macOS
-venv\Scripts\activate        # no Windows
-```
-
-3. Instale as dependências manualmente
-4. Execute o notebook
-   
-```bash
-jupyter notebook main.ipynb
-```
+Este projeto está sob a licença MIT.
